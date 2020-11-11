@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.category %></p>
+  <p><%= @restaurant.phone_number %></p>
+
+  <p><strong>Reviews</strong></p>
+  <% @restaurant.reviews.each do |review| %>
+  <div class="reviews border p-3 mb-3">
+    <p><%= review.content %></p>
+    <p><%= review.rating %>/5</p>
+    <p><%= link_to 'Delete review', review_path(review), method: :delete %></p>
+  </div>
+  <% end %>
+
+  <%= link_to 'Add a review', new_restaurant_review_path(@restaurant) %>
+  <br>
+  <%= link_to 'Back to restaurants', restaurants_path %>
+
+</div>
